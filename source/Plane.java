@@ -8,4 +8,9 @@ public final class Plane
         this.point = point;
         this.orthogonal = orthogonal;
     }
+
+    public String toString()
+    {
+        return ""+point+","+orthogonal;
+    }
 }
