@@ -4,6 +4,7 @@ import java.awt.image.*;
 import java.awt.color.*;
 import javax.imageio.*;
 import java.awt.Graphics;
+import java.awt.Color;
 
 public class Environment {
     private Camera camera;
@@ -24,6 +25,7 @@ public class Environment {
         e.add(new Point(left));
         e.add(new Point(right));
         e.add(new Point(top));
+        e.add(new Point(new Vector(0,0,0), new Color(0,0,0)));
         e.draw();
     }
 
@@ -46,6 +48,9 @@ public class Environment {
 
     public void draw() {
         bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics g = bi.getGraphics();
+        g.setColor(new Color(255,255,255));
+        g.fillRect(0,0,bi.getWidth(),bi.getHeight());
         for (Shape s : shapes) {
             s.draw(bi,this);
         }
