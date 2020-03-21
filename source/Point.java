@@ -2,6 +2,13 @@ import java.awt.image.*;
 import java.awt.Graphics;
 import java.awt.Color;
 
+/**
+ * Point
+ * 
+ * @author NC03
+ * @version 1.0.0
+ * 
+ */
 public class Point extends Shape {
     private Vector position;
     private Color color;

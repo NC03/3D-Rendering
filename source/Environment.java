@@ -6,6 +6,13 @@ import javax.imageio.*;
 import java.awt.Graphics;
 import java.awt.Color;
 
+/**
+ * Environment
+ * 
+ * @author NC03
+ * @version 1.0.0
+ * 
+ */
 public class Environment {
     private Camera camera;
     public int width = 1920;

@@ -1,5 +1,12 @@
 import java.util.*;
 
+/**
+ * Camera
+ * 
+ * @author NC03
+ * @version 1.0.0
+ * 
+ */
 public class Camera {
     private double theta;
     private double phi;

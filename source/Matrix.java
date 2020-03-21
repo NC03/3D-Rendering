@@ -1,5 +1,13 @@
 import java.util.*;
 
+
+/**
+ * Matrix
+ * 
+ * @author NC03
+ * @version 1.0.0
+ * 
+ */
 public class Matrix {
     private double[][] data;
 

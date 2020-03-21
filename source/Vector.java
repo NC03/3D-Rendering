@@ -1,5 +1,12 @@
 import java.util.*;
 
+/**
+ * Vector
+ * 
+ * @author NC03
+ * @version 1.0.0
+ * 
+ */
 public final class Vector {
     private final double x, y, z;
 
