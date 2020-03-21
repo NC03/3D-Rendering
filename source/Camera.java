@@ -51,9 +51,10 @@ public class Camera {
     }
 
     public String toString() {
-        String out = "";
-        out += theta + "," + phi + "," + getPosition() + "," + (getPosition().add(getOrthogonal())) + "," + getPlane();
-        return out;
+        // String out = "";
+        // out += theta + "," + phi + "," + getPosition() + "," + (getPosition().add(getOrthogonal())) + "," + getPlane();
+        // return out;
+        return theta+","+getPosition();
     }
 
     public Vector thetaHat() {

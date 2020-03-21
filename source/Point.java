@@ -12,6 +12,7 @@ import java.awt.Color;
 public class Point extends Shape {
     private Vector position;
     private Color color;
+    private int dim=20;
 
     public Point(Vector position, Color c) {
         this.position = position;
@@ -33,7 +34,7 @@ public class Point extends Shape {
         int y = points[1];
         if(x >= 0 && y >= 0 && x < bi.getWidth() && y < bi.getHeight())
         {
-            g.fillOval(x, y, 20, 20);
+            g.fillOval(x-dim/2, y-dim/2,dim, dim);
         }
     }
 
