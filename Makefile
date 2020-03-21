@@ -1,0 +1,4 @@
+
+
+build:
+	javac source/*.java
