@@ -14,7 +14,7 @@ import java.awt.Color;
  * 
  */
 public class Environment {
-    private Camera camera;
+    public Camera camera;
     public int width = 1920;
     public int height = 1080;
     private double maxX = 2;
@@ -55,17 +55,18 @@ public class Environment {
         e.add(new Line(O,i,new Color(255,0,0)));
         e.add(new Line(O,j,new Color(0,255,0)));
         e.add(new Line(O,k,new Color(0,0,255)));
+        e.add(new Triangle(O,i,j,new Color(200,128,0)));
         double duration = 10;
         double dt = 1.0 / 30;
         int num = (int)(duration/dt);
         double dtheta = Math.PI * 2 / num;
-        for(int a = 0; a < num; a++)
+        for(int a = 0; a <num; a++)
         {
             System.out.println(a+"/"+num);
             double theta = dtheta * a + 3*Math.PI/2;
             e.camera.setTheta(theta);
             e.camera.setPosition(O.add(new Vector(r*Math.cos(theta),r*Math.sin(theta),0)));
-            System.out.println(e.camera);
+            // System.out.println(e);
             try {
                 ImageIO.write(e.draw(),"png",new File("../preview/video/"+formatNum(a,num)+".png"));
             } catch (Exception ex) {
@@ -133,8 +134,14 @@ public class Environment {
     //     // return planar;
     // }
 
-    // public String toString() {
-    //     return "" + camera;
-    // }
+    public String toString() {
+        String out = "";
+        out += "Camera: "+camera+"\n";
+        for(Shape s : shapes)
+        {
+            out += s+"\n";
+        }
+        return out;
+    }
 
 }
