@@ -1,3 +1,4 @@
+import java.awt.image.BufferedImage;
 
 /**
  * Sphere
@@ -6,7 +7,12 @@
  * @version 1.0.0
  * 
  */
-public class Sphere extends Shape
-{
+public class Sphere extends Shape {
+
+    @Override
+    public void draw(BufferedImage bi, Environment e) {
+        // TODO Auto-generated method stub
+
+    }
     
 }

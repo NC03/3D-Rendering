@@ -33,13 +33,13 @@ public class Triangle extends Shape {
     public void draw(BufferedImage bi, Environment e) {
         Graphics g = bi.getGraphics();
         g.setColor(color);
-        int[] points = e.convert(a);
+        int[] points = e.graphicsCoordinates(a);
         int x1 = points[0];
         int y1 = points[1];
-        points = e.convert(b);
+        points = e.graphicsCoordinates(b);
         int x2 = points[0];
         int y2 = points[1];
-        points = e.convert(c);
+        points = e.graphicsCoordinates(c);
         int x3 = points[0];
         int y3 = points[1];
         g.setColor(color);

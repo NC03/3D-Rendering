@@ -30,10 +30,10 @@ public class Line extends Shape {
     public void draw(BufferedImage bi, Environment e) {
         Graphics g = bi.getGraphics();
         g.setColor(color);
-        int[] points = e.convert(pos1);
+        int[] points = e.graphicsCoordinates(pos1);
         int x1 = points[0];
         int y1 = points[1];
-        points = e.convert(pos2);
+        points = e.graphicsCoordinates(pos2);
         int x2 = points[0];
         int y2 = points[1];
         g.drawLine(x1,y1,x2,y2);

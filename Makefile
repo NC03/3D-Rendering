@@ -1,4 +1,7 @@
 
 
 build:
-	javac source/*.java
+	javac source/*.java -d bytecode/
+
+run:
+	java -cp bytecode/ Environment

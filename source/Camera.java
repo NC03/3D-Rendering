@@ -50,6 +50,19 @@ public class Camera {
                 .scalar(length);
     }
 
+    public double getTheta()
+    {
+        return theta;
+    }
+    public double getPhi()
+    {
+        return phi;
+    }
+    public double getLength()
+    {
+        return length;
+    }
+
     public String toString() {
         // String out = "";
         // out += theta + "," + phi + "," + getPosition() + "," + (getPosition().add(getOrthogonal())) + "," + getPlane();
@@ -78,7 +91,14 @@ public class Camera {
         Vector v = b.subtract(point);
         double t = k.dotProduct(n) / v.dotProduct(n);
 
+        Vector nul = new Vector(0,0,0);
+
         Vector planar = point.add(v.scalar(t)).subtract(p);
+
+        if(v.dotProduct(n) > 0)
+        {
+            return nul;
+        }
         return planar;
     }
 

@@ -31,7 +31,7 @@ public class Point extends Shape {
         // System.out.println(e.camera.planarVector(position));
         // System.out.println(Arrays.toString(e.camera.projection(position)));
         g.setColor(color);
-        int[] points = e.convert(position);
+        int[] points = e.graphicsCoordinates(position);
         // System.out.println(Arrays.toString(points));
         int x = points[0];
         int y = points[1];

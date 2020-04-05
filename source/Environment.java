@@ -22,7 +22,8 @@ public class Environment {
     private BufferedImage bi;
 
     public static void main(String[] args) {
-        // Environment e = new Environment(new Camera(3 * Math.PI / 2, 0, new Vector(0, -1, 0), 1));
+        // Environment e = new Environment(new Camera(3 * Math.PI / 2, 0, new Vector(0,
+        // -1, 0), 1));
         // // Vector position = new Vector(0, 1, 0);
         // // System.out.println(e.camera.planarVector(position));
         // // System.out.println(Arrays.toString(e.camera.projection(position)));
@@ -34,41 +35,60 @@ public class Environment {
         // e.add(new Point(top));
         // e.add(new Point(new Vector(0,0,0), new Color(0,0,0)));
         // e.draw();
-        animation();
+        // animation();
+
+        Vector O = new Vector(0, 0, 0);
+        Vector i = new Vector(1, 0, 0);
+        Vector j = new Vector(0, 1, 0);
+        Vector k = new Vector(0, 0, 1);
+
+        Environment e = new Environment(new Camera(Math.PI / 2.0, 0, new Vector(0, -1, 0), 1));
+        e.add(new Line(O, i, new Color(255, 0, 0)));
+        e.add(new Line(O, j, new Color(0, 255, 0)));
+        e.add(new Line(O, k, new Color(0, 0, 255)));
+        e.add(new Point(new Vector(1, 0, 1)));
+        e.add(new Point(new Vector(-1, 0, 1)));
+        e.add(new Point(new Vector(1, -2, 1)));
+        e.add(new Point(new Vector(0.25,-0.25,0),new Color(0,0,255)));
+        try {
+            ImageIO.write(e.draw(), "png", new File("preview.png"));
+            System.out.println(Arrays.toString(e.convert(new Vector(0, 0, 0))));
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
-    public static void animation()
-    {
+    public static void animation() {
         double r = 3;
-        Environment e = new Environment(new Camera(3 * Math.PI / 2, 0, new Vector(0, -1*r, 0), 1));
+        Environment e = new Environment(new Camera(3 * Math.PI / 2, 0, new Vector(0, -1 * r, 0), 1));
         Vector left = new Vector(-.5, 1, 0);
         Vector right = new Vector(.5, 1, 0);
         Vector top = new Vector(0, 1, 0.75);
-        Vector O = new Vector(0,0,0);
-        Vector i = new Vector(1,0,0);
-        Vector j = new Vector(0,1,0);
-        Vector k = new Vector(0,0,1);
+        Vector O = new Vector(0, 0, 0);
+        Vector i = new Vector(1, 0, 0);
+        Vector j = new Vector(0, 1, 0);
+        Vector k = new Vector(0, 0, 1);
         e.add(new Point(left));
         e.add(new Point(right));
         e.add(new Point(top));
-        e.add(new Point(O, new Color(0,0,0)));
-        e.add(new Line(O,i,new Color(255,0,0)));
-        e.add(new Line(O,j,new Color(0,255,0)));
-        e.add(new Line(O,k,new Color(0,0,255)));
-        e.add(new Triangle(O,i,j,new Color(200,128,0)));
+        e.add(new Point(O, new Color(0, 0, 0)));
+        e.add(new Line(O, i, new Color(255, 0, 0)));
+        e.add(new Line(O, j, new Color(0, 255, 0)));
+        e.add(new Line(O, k, new Color(0, 0, 255)));
+        e.add(new Triangle(O, i, j, new Color(200, 128, 0)));
         double duration = 10;
         double dt = 1.0 / 30;
-        int num = (int)(duration/dt);
+        int num = (int) (duration / dt);
         double dtheta = Math.PI * 2 / num;
-        for(int a = 0; a <num; a++)
-        {
-            System.out.println(a+"/"+num);
-            double theta = dtheta * a + 3*Math.PI/2;
+        for (int a = 0; a < num; a++) {
+            System.out.println(a + "/" + num);
+            double theta = dtheta * a + 3 * Math.PI / 2;
             e.camera.setTheta(theta);
-            e.camera.setPosition(O.add(new Vector(r*Math.cos(theta),r*Math.sin(theta),0)));
+            e.camera.setPosition(O.add(new Vector(r * Math.cos(theta), r * Math.sin(theta), 0)));
             // System.out.println(e);
             try {
-                ImageIO.write(e.draw(),"png",new File("../preview/video/"+formatNum(a,num)+".png"));
+                ImageIO.write(e.draw(), "png", new File("../preview/video/" + formatNum(a, num) + ".png"));
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -76,12 +96,10 @@ public class Environment {
 
     }
 
-    public static String formatNum(int a, int max)
-    {
-        String out = a+"";
-        while(out.length() < (""+max).length())
-        {
-            out = "0"+out;
+    public static String formatNum(int a, int max) {
+        String out = a + "";
+        while (out.length() < ("" + max).length()) {
+            out = "0" + out;
         }
         return out;
     }
@@ -98,48 +116,61 @@ public class Environment {
     public int[] convert(Vector position) {
         double scalar = 1.0 / maxX * width / 2;
         double[] coords = camera.projection(position);
-        int x = (int) (-1 * coords[0] * scalar + bi.getWidth() / 2);
-        int y = (int) (1 * coords[1] * scalar + bi.getHeight() / 2);
-        return new int[]{x,y};
+        int x = (int) (coords[0] * scalar);
+        int y = (int) (coords[1] * scalar);
+        x *= -1;
+        y *= -1;
+        x = bi.getWidth() / 2 + x;
+        y = bi.getHeight() / 2 - y;
+        // int x = (int) (-1 * coords[0] * scalar + bi.getWidth() / 2);
+        // int y = (int) (1 * coords[1] * scalar + bi.getHeight() / 2);
+        return new int[] { x, y };
+    }
+
+    public int[] graphicsCoordinates(Vector position)
+    {
+        int[] out = convert(position);
+        return new int[]{out[0],bi.getHeight()-out[1]};
     }
 
     public BufferedImage draw() {
         bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics g = bi.getGraphics();
-        g.setColor(new Color(255,255,255));
-        g.fillRect(0,0,bi.getWidth(),bi.getHeight());
+        g.setColor(new Color(255, 255, 255));
+        g.fillRect(0, 0, bi.getWidth(), bi.getHeight());
         for (Shape s : shapes) {
-            s.draw(bi,this);
+            s.draw(bi, this);
         }
         return bi;
     }
 
     // public Vector planarVector(Vector point) {
-    //     Vector n = camera.getOrthogonal();
-    //     Vector b = camera.getPosition();
-    //     Vector p = b.add(n);
-    //     Vector k = p.subtract(point);
-    //     Vector v = b.subtract(point);
-    //     double t = k.dotProduct(n) / v.dotProduct(n);
+    // Vector n = camera.getOrthogonal();
+    // Vector b = camera.getPosition();
+    // Vector p = b.add(n);
+    // Vector k = p.subtract(point);
+    // Vector v = b.subtract(point);
+    // double t = k.dotProduct(n) / v.dotProduct(n);
 
-    //     Vector planar = point.add(v.scalar(t)).subtract(camera.getPosition().add(n));
-    //     return planar;
+    // Vector planar = point.add(v.scalar(t)).subtract(camera.getPosition().add(n));
+    // return planar;
 
-    //     // Vector p = camera.getPosition().add(camera.getOrthogonal());
-    //     // Vector c = camera.getPosition();
-    //     // Vector n = camera.getOrthogonal();
-    //     // double scalar = p.dotProduct(n) / (Vector.subtract(c, point).dotProduct(n));
-    //     // Vector planar = Vector.add(point, Vector.subtract(c, point).scalar(scalar))
-    //     // .subtract(p);
-    //     // return planar;
+    // // Vector p = camera.getPosition().add(camera.getOrthogonal());
+    // // Vector c = camera.getPosition();
+    // // Vector n = camera.getOrthogonal();
+    // // double scalar = p.dotProduct(n) / (Vector.subtract(c,
+    // point).dotProduct(n));
+    // // Vector planar = Vector.add(point, Vector.subtract(c,
+    // point).scalar(scalar))
+    // // .subtract(p);
+    // // return planar;
     // }
 
     public String toString() {
         String out = "";
-        out += "Camera: "+camera+"\n";
-        for(Shape s : shapes)
-        {
-            out += s+"\n";
+        out += "Camera: " + camera + "\n";
+        for (Shape s : shapes) {
+            out += s + "\n";
         }
         return out;
     }
