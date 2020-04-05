@@ -116,22 +116,26 @@ public class Camera {
         // double b1 = Math.abs(cos(phi)) * csc(theta) * (a1 * sec(phi) - cos(theta) *
         // tan(phi) * b2 - cos(theta) * b3);
         // return new double[]{b1,b2};
-        double[][] data = { { thetaHat().getX(), phiHat().getX(), rHat().getX(), planar.getX() },
-                { thetaHat().getY(), phiHat().getY(), rHat().getY(), planar.getY() },
-                { thetaHat().getZ(), phiHat().getZ(), rHat().getZ(), planar.getZ() } };
-        Matrix m = new Matrix(data);
 
-        // System.out.println(m);
 
-        Matrix temp = m.rref();
 
-        // System.out.println(temp);
+        // double[][] data = { { thetaHat().getX(), phiHat().getX(), rHat().getX(), planar.getX() },
+        //         { thetaHat().getY(), phiHat().getY(), rHat().getY(), planar.getY() },
+        //         { thetaHat().getZ(), phiHat().getZ(), rHat().getZ(), planar.getZ() } };
+        // Matrix m = new Matrix(data);
 
-        double[] out = new double[temp.getData().length];
-        for (int i = 0; i < temp.getData().length; i++) {
-            out[i] = temp.getData()[i][temp.getData()[i].length - 1];
-        }
-        return out;
+        // // System.out.println(m);
+
+        // Matrix temp = m.rref();
+
+        // // System.out.println(temp);
+
+        // double[] out = new double[temp.getData().length];
+        // for (int i = 0; i < temp.getData().length; i++) {
+        //     out[i] = temp.getData()[i][temp.getData()[i].length - 1];
+        // }
+        // return out;
+        return new double[]{thetaHat().dotProduct(planar), phiHat().dotProduct(planar)};
     }
 
     private double sin(double ang) {

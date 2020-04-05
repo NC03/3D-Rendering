@@ -35,28 +35,28 @@ public class Environment {
         // e.add(new Point(top));
         // e.add(new Point(new Vector(0,0,0), new Color(0,0,0)));
         // e.draw();
-        // animation();
+        animation();
 
-        Vector O = new Vector(0, 0, 0);
-        Vector i = new Vector(1, 0, 0);
-        Vector j = new Vector(0, 1, 0);
-        Vector k = new Vector(0, 0, 1);
+        // Vector O = new Vector(0, 0, 0);
+        // Vector i = new Vector(1, 0, 0);
+        // Vector j = new Vector(0, 1, 0);
+        // Vector k = new Vector(0, 0, 1);
 
-        Environment e = new Environment(new Camera(Math.PI / 2.0, 0, new Vector(0, -1, 0), 1));
-        e.add(new Line(O, i, new Color(255, 0, 0)));
-        e.add(new Line(O, j, new Color(0, 255, 0)));
-        e.add(new Line(O, k, new Color(0, 0, 255)));
-        e.add(new Point(new Vector(1, 0, 1)));
-        e.add(new Point(new Vector(-1, 0, 1)));
-        e.add(new Point(new Vector(1, -2, 1)));
-        e.add(new Point(new Vector(0.25,-0.25,0),new Color(0,0,255)));
-        try {
-            ImageIO.write(e.draw(), "png", new File("preview.png"));
-            System.out.println(Arrays.toString(e.convert(new Vector(0, 0, 0))));
+        // Environment e = new Environment(new Camera(Math.PI / 2.0, 0, new Vector(0, -1, 0), 1));
+        // e.add(new Line(O, i, new Color(255, 0, 0)));
+        // e.add(new Line(O, j, new Color(0, 255, 0)));
+        // e.add(new Line(O, k, new Color(0, 0, 255)));
+        // e.add(new Point(new Vector(1, 0, 1)));
+        // e.add(new Point(new Vector(-1, 0, 1)));
+        // e.add(new Point(new Vector(1, -2, 1)));
+        // e.add(new Point(new Vector(0.25,-0.25,0),new Color(0,0,255)));
+        // try {
+        //     ImageIO.write(e.draw(), "png", new File("preview.png"));
+        //     System.out.println(Arrays.toString(e.convert(new Vector(0, 0, 0))));
 
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
+        // } catch (Exception ex) {
+        //     ex.printStackTrace();
+        // }
     }
 
     public static void animation() {
@@ -88,7 +88,7 @@ public class Environment {
             e.camera.setPosition(O.add(new Vector(r * Math.cos(theta), r * Math.sin(theta), 0)));
             // System.out.println(e);
             try {
-                ImageIO.write(e.draw(), "png", new File("../preview/video/" + formatNum(a, num) + ".png"));
+                ImageIO.write(e.draw(), "png", new File("preview/video/" + formatNum(a, num) + ".png"));
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
