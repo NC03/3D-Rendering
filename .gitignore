@@ -1,5 +1,6 @@
 *.class
 *.png
 *.mp4
+*.jar
 preview/
 bytecode/
