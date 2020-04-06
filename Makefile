@@ -15,3 +15,6 @@ version:
 
 generate_video:
 	ffmpeg -r 30 -i preview/video/%03d.png -c:v libx264 -vf fps=30 -pix_fmt yuv420p video_V$(VERSION).mp4
+
+generate_documentation:
+	javadoc source/*.java -d docs/
