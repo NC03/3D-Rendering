@@ -1,8 +1,8 @@
-import java.util.*;
-import java.io.*;
-import java.awt.image.*;
-import java.awt.color.*;
-import javax.imageio.*;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.Color;
 
@@ -10,7 +10,7 @@ import java.awt.Color;
  * Environment
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * 
  */
 public class Environment {
@@ -20,7 +20,7 @@ public class Environment {
     private double maxX = 2;
     private List<Shape> shapes;
     private BufferedImage bi;
-    private Color backgroundColor = new Color(220,220,220);
+    private Color backgroundColor = new Color(255, 255, 255);
 
     public static void main(String[] args) {
         animation();
@@ -53,7 +53,6 @@ public class Environment {
             double theta = dtheta * a + 3 * Math.PI / 2;
             e.camera.setTheta(theta);
             e.camera.setPosition(O.add(new Vector(r * Math.cos(theta), r * Math.sin(theta), 0)));
-            // System.out.println(e);
             try {
                 ImageIO.write(e.draw(), "png", new File("preview/video/" + formatNum(a, num) + ".png"));
             } catch (Exception ex) {
@@ -80,14 +79,14 @@ public class Environment {
     }
 
     public int[] convertToCanvas(Vector position) {
-        double scalar = 1.0 / maxX * width / 2; //Scaling maintaing ratio to fill width
+        double scalar = 1.0 / maxX * width / 2; // Scaling maintaing ratio to fill width
         double[] coords = camera.projection(position);
         int x = (int) (coords[0] * scalar);
         int y = (int) (coords[1] * scalar);
         x *= -1;
         y *= -1;
         x = bi.getWidth() / 2 + x;
-        y = bi.getHeight() / 2 + y;
+        y = bi.getHeight() / 2 - y;
         return new int[] { x, y };
     }
 

@@ -1,13 +1,12 @@
-import java.awt.image.*;
+import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.util.*;
 
 /**
  * Point
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * 
  */
 public class Point extends Shape {
@@ -33,11 +32,7 @@ public class Point extends Shape {
             int[] points = e.convertToCanvas(position);
             int x = points[0];
             int y = points[1];
-            // if (x >= 0 && y >= 0 && x < bi.getWidth() && y < bi.getHeight()) {
-                g.fillOval(x - dim / 2, y - dim / 2, dim, dim);
-            // } else {
-            //     System.out.println("what");
-            // }
+            g.fillOval(x - dim / 2, y - dim / 2, dim, dim);
         }
     }
 

@@ -1,10 +1,8 @@
-import java.util.*;
-
 /**
  * Vector
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * 
  */
 public final class Vector {

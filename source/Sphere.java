@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
  * Sphere
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * 
  */
 public class Sphere extends Shape {
@@ -13,5 +13,5 @@ public class Sphere extends Shape {
     public void draw(BufferedImage bi, Environment e) {
 
     }
-    
+
 }

@@ -3,24 +3,21 @@
  * Plane
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * @deprecated
  * 
  */
-public final class Plane
-{
+@Deprecated
+public final class Plane {
     private final Vector point;
     private final Vector orthogonal;
 
-    
-    public Plane(Vector point, Vector orthogonal)
-    {
+    public Plane(Vector point, Vector orthogonal) {
         this.point = point;
         this.orthogonal = orthogonal;
     }
 
-    public String toString()
-    {
-        return ""+point+","+orthogonal;
+    public String toString() {
+        return "" + point + "," + orthogonal;
     }
 }

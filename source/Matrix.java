@@ -1,14 +1,14 @@
-import java.util.*;
-
+import java.util.Arrays;
 
 /**
  * Matrix
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * @deprecated
  * 
  */
+@Deprecated
 public class Matrix {
     private double[][] data;
 
@@ -20,12 +20,10 @@ public class Matrix {
         return data;
     }
 
-    private double[] subtract(double[] a, double[] b)
-    {
+    private double[] subtract(double[] a, double[] b) {
         double[] out = new double[a.length];
-        for(int i = 0; i < out.length; i++)
-        {
-            out[i] = a[i]-b[i];
+        for (int i = 0; i < out.length; i++) {
+            out[i] = a[i] - b[i];
         }
         return out;
     }
@@ -36,29 +34,22 @@ public class Matrix {
             orderRows();
             boolean flag = false;
             int idx = 0;
-            for(int i = 0; i < data.length; i++)
-            {
-                if(!flag && leadingCoefficientIndex(getRow(i)) == col)
-                {
+            for (int i = 0; i < data.length; i++) {
+                if (!flag && leadingCoefficientIndex(getRow(i)) == col) {
                     idx = i;
                     flag = true;
-                }else if(leadingCoefficientIndex(getRow(i)) == col)
-                {
+                } else if (leadingCoefficientIndex(getRow(i)) == col) {
                     data[i] = subtract(data[i], scalar(data[idx], data[i][col] / data[idx][col]));
                 }
             }
         }
         scaleRows();
         // Back propogation
-        for(int i = data.length-1; i >= 0; i--)
-        {
-            for(int j = leadingCoefficientIndex(getRow(i))+1; j < data[0].length-1; j++)
-            {
+        for (int i = data.length - 1; i >= 0; i--) {
+            for (int j = leadingCoefficientIndex(getRow(i)) + 1; j < data[0].length - 1; j++) {
                 boolean flag = false;
-                for(int k = data.length-1; k >= 0; k--)
-                {
-                    if(!flag && leadingCoefficientIndex(getRow(k)) == j)
-                    {
+                for (int k = data.length - 1; k >= 0; k--) {
+                    if (!flag && leadingCoefficientIndex(getRow(k)) == j) {
                         data[i] = subtract(data[i], scalar(data[k], data[i][j]));
                         flag = true;
                     }
@@ -73,11 +64,9 @@ public class Matrix {
         return data[idx];
     }
 
-    private void scaleRows()
-    {
-        for(int i = 0; i < data.length; i++)
-        {
-            data[i]=  scalar(data[i], 1.0 / data[i][leadingCoefficientIndex(data[i])]);
+    private void scaleRows() {
+        for (int i = 0; i < data.length; i++) {
+            data[i] = scalar(data[i], 1.0 / data[i][leadingCoefficientIndex(data[i])]);
         }
     }
 
@@ -130,12 +119,10 @@ public class Matrix {
         return true;
     }
 
-    public String toString()
-    {
+    public String toString() {
         String out = "";
-        for(double[] row : data)
-        {
-            out += Arrays.toString(row)+"\n";
+        for (double[] row : data) {
+            out += Arrays.toString(row) + "\n";
         }
         return out;
     }

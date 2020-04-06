@@ -6,7 +6,7 @@ import java.awt.Graphics;
  * Sphere
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * 
  */
 public class Triangle extends Shape {

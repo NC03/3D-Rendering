@@ -1,10 +1,8 @@
-import java.util.*;
-
 /**
  * Camera
  * 
  * @author NC03
- * @version 1.2.1
+ * @version 1.2.2
  * 
  */
 public class Camera {
@@ -37,10 +35,6 @@ public class Camera {
         this.position = position;
     }
 
-    // public Plane getPlane() {
-    //     return new Plane(position.add(getOrthogonal()), getOrthogonal().unitVector());
-    // }
-
     public Vector getPosition() {
         return position;
     }
@@ -50,21 +44,20 @@ public class Camera {
                 .scalar(length);
     }
 
-    public double getTheta()
-    {
+    public double getTheta() {
         return theta;
     }
-    public double getPhi()
-    {
+
+    public double getPhi() {
         return phi;
     }
-    public double getLength()
-    {
+
+    public double getLength() {
         return length;
     }
 
     public String toString() {
-        return "position: "+getPosition()+", angle: "+theta+", orthogonal: "+getOrthogonal();
+        return "position: " + getPosition() + ", angle: " + theta + ", orthogonal: " + getOrthogonal();
     }
 
     public Vector thetaHat() {
@@ -91,21 +84,21 @@ public class Camera {
         return planar;
     }
 
-    public double[] projection(Vector point) {
-        Vector planar = planarVector(point);
-        return new double[]{thetaHat().dotProduct(planar), phiHat().dotProduct(planar)};
-    }
-
-    boolean validate(Vector point)
-    {
+    public boolean validate(Vector point) {
         Vector n = getOrthogonal();
         Vector b = getPosition();
         Vector v = b.subtract(point);
-        return !(v.dotProduct(n) > 0);
+        return (v.dotProduct(n) > 0);
     }
 
     private double sin(double ang) {
         return Math.sin(ang);
+    }
+
+    public double[] projection(Vector point) {
+        Vector planar = planarVector(point);
+        double[] out = { thetaHat().dotProduct(planar), phiHat().dotProduct(planar) };
+        return out;
     }
 
     private double cos(double ang) {
