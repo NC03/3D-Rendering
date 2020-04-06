@@ -2,7 +2,7 @@
  * Camera
  * 
  * @author NC03
- * @version 1.2.2
+ * @version 1.2.3
  * 
  */
 public class Camera {
@@ -89,6 +89,18 @@ public class Camera {
         Vector b = getPosition();
         Vector v = b.subtract(point);
         return (v.dotProduct(n) > 0);
+    }
+
+    public boolean validate(Vector[] points)
+    {
+        for(Vector v : points)
+        {
+            if(!validate(v))
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     private double sin(double ang) {

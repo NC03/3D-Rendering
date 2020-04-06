@@ -6,13 +6,14 @@ import java.awt.Color;
  * Point
  * 
  * @author NC03
- * @version 1.2.2
+ * @version 1.2.3
  * 
  */
 public class Point extends Shape {
     private Vector position;
     private Color color;
     private int dim = 20;
+    private Vector origin;
 
     public Point(Vector position, Color c) {
         this.position = position;
@@ -41,6 +42,27 @@ public class Point extends Shape {
         String out = super.toString() + ": ";
         out += "position: " + position;
         return out;
+    }
+
+    @Override
+    public void setOrigin(Vector o) {
+        this.origin = o;
+    }
+
+    @Override
+    public Vector getOrigin()
+    {
+        return this.origin;
+    }
+
+    @Override
+    public Vector centroid() {
+        return position;
+    }
+
+    @Override
+    public boolean validate(Camera c) {
+        return c.validate(position);
     }
 
 }

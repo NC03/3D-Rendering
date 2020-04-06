@@ -5,12 +5,13 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.util.PriorityQueue;
 
 /**
  * Environment
  * 
  * @author NC03
- * @version 1.2.2
+ * @version 1.2.3
  * 
  */
 public class Environment {
@@ -19,7 +20,6 @@ public class Environment {
     public int height = 1080;
     private double maxX = 2;
     private List<Shape> shapes;
-    private BufferedImage bi;
     private Color backgroundColor = new Color(255, 255, 255);
 
     public static void main(String[] args) {
@@ -85,18 +85,27 @@ public class Environment {
         int y = (int) (coords[1] * scalar);
         x *= -1;
         y *= -1;
-        x = bi.getWidth() / 2 + x;
-        y = bi.getHeight() / 2 - y;
+        x = width / 2 + x;
+        y = height / 2 - y;
         return new int[] { x, y };
     }
 
     public BufferedImage draw() {
-        bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics g = bi.getGraphics();
         g.setColor(backgroundColor);
         g.fillRect(0, 0, bi.getWidth(), bi.getHeight());
+        PriorityQueue<Shape> pq = new PriorityQueue<Shape>();
         for (Shape s : shapes) {
+            s.setOrigin(camera.getPosition());
+            if (s.validate(camera)) {
+                pq.add(s);
+            }
+        }
+        Shape s = pq.poll();
+        while (s != null) {
             s.draw(bi, this);
+            s = pq.poll();
         }
         return bi;
     }

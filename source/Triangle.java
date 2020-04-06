@@ -6,7 +6,7 @@ import java.awt.Graphics;
  * Sphere
  * 
  * @author NC03
- * @version 1.2.2
+ * @version 1.2.3
  * 
  */
 public class Triangle extends Shape {
@@ -15,6 +15,7 @@ public class Triangle extends Shape {
     private Vector b;
     private Vector c;
     private Color color;
+    private Vector origin;
 
     public Triangle(Vector a, Vector b, Vector c, Color d) {
         this.a = a;
@@ -46,6 +47,27 @@ public class Triangle extends Shape {
             int y3 = points[1];
             g.fillPolygon(new int[] { x1, x2, x3 }, new int[] { y1, y2, y3 }, 3);
         }
+    }
+
+    @Override
+    public void setOrigin(Vector o) {
+        this.origin = o;
+    }
+
+    @Override
+    public Vector getOrigin()
+    {
+        return this.origin;
+    }
+
+    @Override
+    public Vector centroid() {
+        return a.add(b).add(c).scalar(1.0/3);
+    }
+
+    @Override
+    public boolean validate(Camera c) {
+        return c.validate(new Vector[]{a,b,this.c});
     }
 
 }

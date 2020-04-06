@@ -4,7 +4,7 @@ import java.util.Arrays;
  * Matrix
  * 
  * @author NC03
- * @version 1.2.2
+ * @version 1.2.3
  * @deprecated
  * 
  */

@@ -6,13 +6,14 @@ import java.awt.Color;
  * Line
  * 
  * @author NC03
- * @version 1.2.2
+ * @version 1.2.3
  * 
  */
 public class Line extends Shape {
     private Vector pos1;
     private Vector pos2;
     private Color color;
+    private Vector origin;
 
     public Line(Vector pos1, Vector pos2, Color c) {
         this.pos1 = pos1;
@@ -39,6 +40,27 @@ public class Line extends Shape {
             int y2 = points[1];
             g.drawLine(x1, y1, x2, y2);
         }
+    }
+
+    @Override
+    public void setOrigin(Vector o) {
+        this.origin = o;
+    }
+
+    @Override
+    public Vector getOrigin()
+    {
+        return this.origin;
+    }
+
+    @Override
+    public Vector centroid() {
+        return pos1.add(pos2).scalar(0.5);
+    }
+
+    @Override
+    public boolean validate(Camera c) {
+        return c.validate(new Vector[]{pos1,pos2});
     }
 
 }
