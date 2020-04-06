@@ -78,6 +78,11 @@ public class Environment {
         shapes.add(s);
     }
 
+    public void remove(Shape s)
+    {
+        shapes.remove(s);
+    }
+
     public int[] convertToCanvas(Vector position) {
         double scalar = 1.0 / maxX * width / 2; // Scaling maintaing ratio to fill width
         double[] coords = camera.projection(position);

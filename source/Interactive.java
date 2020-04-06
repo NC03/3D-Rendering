@@ -9,6 +9,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
 
 /**
  * Interactive
@@ -52,12 +53,22 @@ public class Interactive extends JFrame {
         e.add(new Point(k, new Color(0, 0, 255)));
         // e.add(new Triangle(O, i, j));
         // e.add(new Triangle(O, j, k, new Color(128, 128, 0)));
-        int len = 24;
-        for(int l = 0; l < len; l++)
-        {
-            double dist = 0.25*l;
-            e.add(new Triangle(new Vector(0,dist,0), new Vector(1,dist,0), new Vector(0.5,dist,Math.sqrt(3)), new Color(Color.HSBtoRGB(1.0F*l/len, 1.0F, 1.0F))));
+
+        try {
+
+            e.add(new ASCIISTL(O, new Color(0, 128, 255), new File("/home/nc/Desktop/logo.stl")));
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
+
+        // int len = 24;
+        // for(int l = 0; l < len; l++)
+        // {
+        // double dist = 0.25*l;
+        // e.add(new Triangle(new Vector(0,dist,0), new Vector(1,dist,0), new
+        // Vector(0.5,dist,Math.sqrt(3)), new Color(Color.HSBtoRGB(1.0F*l/len, 1.0F,
+        // 1.0F))));
+        // }
         image = e.draw();
 
         addComponentListener(new ComponentAdapter() {
