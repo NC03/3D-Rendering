@@ -7,7 +7,7 @@ import java.util.*;
  * Point
  * 
  * @author NC03
- * @version 1.0.0
+ * @version 1.2.1
  * 
  */
 public class Point extends Shape {
@@ -27,20 +27,17 @@ public class Point extends Shape {
 
     @Override
     public void draw(BufferedImage bi, Environment e) {
-        Graphics g = bi.getGraphics();
-        // System.out.println(e.camera.planarVector(position));
-        // System.out.println(Arrays.toString(e.camera.projection(position)));
         if (e.camera.validate(position)) {
+            Graphics g = bi.getGraphics();
             g.setColor(color);
-            int[] points = e.graphicsCoordinates(position);
-            // System.out.println(Arrays.toString(points));
+            int[] points = e.convertToCanvas(position);
             int x = points[0];
             int y = points[1];
-            if (x >= 0 && y >= 0 && x < bi.getWidth() && y < bi.getHeight()) {
+            // if (x >= 0 && y >= 0 && x < bi.getWidth() && y < bi.getHeight()) {
                 g.fillOval(x - dim / 2, y - dim / 2, dim, dim);
-            } else {
-                System.out.println("what");
-            }
+            // } else {
+            //     System.out.println("what");
+            // }
         }
     }
 

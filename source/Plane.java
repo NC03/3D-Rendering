@@ -3,7 +3,8 @@
  * Plane
  * 
  * @author NC03
- * @version 1.0.0
+ * @version 1.2.1
+ * @deprecated
  * 
  */
 public final class Plane

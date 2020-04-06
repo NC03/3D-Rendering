@@ -6,7 +6,7 @@ import java.awt.Color;
  * Line
  * 
  * @author NC03
- * @version 1.0.0
+ * @version 1.2.1
  * 
  */
 public class Line extends Shape {
@@ -31,10 +31,10 @@ public class Line extends Shape {
         if (e.camera.validate(pos1) && e.camera.validate(pos2)) {
         Graphics g = bi.getGraphics();
         g.setColor(color);
-        int[] points = e.graphicsCoordinates(pos1);
+        int[] points = e.convertToCanvas(pos1);
         int x1 = points[0];
         int y1 = points[1];
-        points = e.graphicsCoordinates(pos2);
+        points = e.convertToCanvas(pos2);
         int x2 = points[0];
         int y2 = points[1];
         g.drawLine(x1,y1,x2,y2);

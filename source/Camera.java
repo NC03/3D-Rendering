@@ -4,7 +4,7 @@ import java.util.*;
  * Camera
  * 
  * @author NC03
- * @version 1.0.0
+ * @version 1.2.1
  * 
  */
 public class Camera {
@@ -37,9 +37,9 @@ public class Camera {
         this.position = position;
     }
 
-    public Plane getPlane() {
-        return new Plane(position.add(getOrthogonal()), getOrthogonal().unitVector());
-    }
+    // public Plane getPlane() {
+    //     return new Plane(position.add(getOrthogonal()), getOrthogonal().unitVector());
+    // }
 
     public Vector getPosition() {
         return position;
@@ -64,9 +64,6 @@ public class Camera {
     }
 
     public String toString() {
-        // String out = "";
-        // out += theta + "," + phi + "," + getPosition() + "," + (getPosition().add(getOrthogonal())) + "," + getPlane();
-        // return out;
         return "position: "+getPosition()+", angle: "+theta+", orthogonal: "+getOrthogonal();
     }
 
@@ -90,52 +87,12 @@ public class Camera {
         Vector k = p.subtract(point);
         Vector v = b.subtract(point);
         double t = k.dotProduct(n) / v.dotProduct(n);
-
-        Vector nul = new Vector(0,0,0);
-
         Vector planar = point.add(v.scalar(t)).subtract(p);
-
-        
-        if(v.dotProduct(n) > 0)
-        {
-            return nul;
-        }
         return planar;
     }
 
     public double[] projection(Vector point) {
         Vector planar = planarVector(point);
-        // double a1 = planar.getX();
-        // double a2 = planar.getY();
-        // double a3 = planar.getZ();
-        // double b3 = sec(phi) / (cot(phi) - tan(phi))
-        // * (cot(phi) / (tan(theta) - cot(theta)) * (a2 * sec(theta) - a1 * csc(theta))
-        // - a3);
-        // double b2 = sec(phi)
-        // * (a3 + (a3 - (a2 * sec(theta) - a1 * csc(theta)) / (tan(theta) -
-        // cot(theta))) / (cot(phi) - tan(phi)));
-        // double b1 = Math.abs(cos(phi)) * csc(theta) * (a1 * sec(phi) - cos(theta) *
-        // tan(phi) * b2 - cos(theta) * b3);
-        // return new double[]{b1,b2};
-
-
-
-        // double[][] data = { { thetaHat().getX(), phiHat().getX(), rHat().getX(), planar.getX() },
-        //         { thetaHat().getY(), phiHat().getY(), rHat().getY(), planar.getY() },
-        //         { thetaHat().getZ(), phiHat().getZ(), rHat().getZ(), planar.getZ() } };
-        // Matrix m = new Matrix(data);
-
-        // // System.out.println(m);
-
-        // Matrix temp = m.rref();
-
-        // // System.out.println(temp);
-
-        // double[] out = new double[temp.getData().length];
-        // for (int i = 0; i < temp.getData().length; i++) {
-        //     out[i] = temp.getData()[i][temp.getData()[i].length - 1];
-        // }
-        // return out;
         return new double[]{thetaHat().dotProduct(planar), phiHat().dotProduct(planar)};
     }
 
@@ -143,15 +100,7 @@ public class Camera {
     {
         Vector n = getOrthogonal();
         Vector b = getPosition();
-        Vector p = b.add(n);
-        Vector k = p.subtract(point);
         Vector v = b.subtract(point);
-        double t = k.dotProduct(n) / v.dotProduct(n);
-
-        Vector nul = new Vector(0,0,0);
-
-        Vector planar = point.add(v.scalar(t)).subtract(p);
-
         return !(v.dotProduct(n) > 0);
     }
 

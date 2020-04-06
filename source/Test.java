@@ -4,7 +4,14 @@ import javax.imageio.*;
 import java.io.*;
 import java.awt.Graphics;
 
-
+/**
+ * Sphere
+ * 
+ * @author NC03
+ * @version 1.2.1
+ * @deprecated
+ * 
+ */
 public class Test
 {
     public static void main(String[] args)
