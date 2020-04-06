@@ -20,6 +20,6 @@ ffmpeg -framerate 30 -pattern_type glob -i "*.png" -c:v libx264 -pix_fmt yuv420p
 
 ## To Do
 
-- Fix bug with `error.log` intervals out of 300 causing weird behavior and plotting outside of planar bounds
-- [] Render further objects first to not overlay closer objects
+- [X] Fix bug with `error.log` intervals out of 300 causing weird behavior and plotting outside of planar bounds
+- [ ] Render further objects first to not overlay closer objects
   - Do this by calculating midpoint of triangles and closer to camera plane is drawn later
