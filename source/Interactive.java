@@ -18,9 +18,9 @@ public class Interactive extends JFrame{
     private BufferedImage image;
     public Environment e;
 
-    public double dp = 0.25;
-    public double dt = Math.PI/8;
-    public double dl = 0.125;
+    public double dp = 0.125;
+    public double dt = Math.PI/32;
+    public double dl = 0.0625;
 
 
 

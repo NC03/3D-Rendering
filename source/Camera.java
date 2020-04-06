@@ -95,6 +95,7 @@ public class Camera {
 
         Vector planar = point.add(v.scalar(t)).subtract(p);
 
+        
         if(v.dotProduct(n) > 0)
         {
             return nul;
@@ -136,6 +137,22 @@ public class Camera {
         // }
         // return out;
         return new double[]{thetaHat().dotProduct(planar), phiHat().dotProduct(planar)};
+    }
+
+    boolean validate(Vector point)
+    {
+        Vector n = getOrthogonal();
+        Vector b = getPosition();
+        Vector p = b.add(n);
+        Vector k = p.subtract(point);
+        Vector v = b.subtract(point);
+        double t = k.dotProduct(n) / v.dotProduct(n);
+
+        Vector nul = new Vector(0,0,0);
+
+        Vector planar = point.add(v.scalar(t)).subtract(p);
+
+        return !(v.dotProduct(n) > 0);
     }
 
     private double sin(double ang) {

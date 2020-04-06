@@ -30,15 +30,17 @@ public class Point extends Shape {
         Graphics g = bi.getGraphics();
         // System.out.println(e.camera.planarVector(position));
         // System.out.println(Arrays.toString(e.camera.projection(position)));
-        g.setColor(color);
-        int[] points = e.graphicsCoordinates(position);
-        // System.out.println(Arrays.toString(points));
-        int x = points[0];
-        int y = points[1];
-        if (x >= 0 && y >= 0 && x < bi.getWidth() && y < bi.getHeight()) {
-            g.fillOval(x - dim / 2, y - dim / 2, dim, dim);
-        }else{
-            System.out.println("what");
+        if (e.camera.validate(position)) {
+            g.setColor(color);
+            int[] points = e.graphicsCoordinates(position);
+            // System.out.println(Arrays.toString(points));
+            int x = points[0];
+            int y = points[1];
+            if (x >= 0 && y >= 0 && x < bi.getWidth() && y < bi.getHeight()) {
+                g.fillOval(x - dim / 2, y - dim / 2, dim, dim);
+            } else {
+                System.out.println("what");
+            }
         }
     }
 

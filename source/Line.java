@@ -28,6 +28,7 @@ public class Line extends Shape {
 
     @Override
     public void draw(BufferedImage bi, Environment e) {
+        if (e.camera.validate(pos1) && e.camera.validate(pos2)) {
         Graphics g = bi.getGraphics();
         g.setColor(color);
         int[] points = e.graphicsCoordinates(pos1);
@@ -37,6 +38,7 @@ public class Line extends Shape {
         int x2 = points[0];
         int y2 = points[1];
         g.drawLine(x1,y1,x2,y2);
+        }
     }
 
 }
