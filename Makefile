@@ -20,4 +20,4 @@ generate_documentation:
 	javadoc source/*.java -d docs/
 
 generate_binary:
-	python3 make.py
+	python3 make.py buildJar

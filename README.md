@@ -13,6 +13,7 @@ By NC03
   - Do this by calculating midpoint of triangles and closer to camera plane is drawn later
   - Due to error of intersecting triangles where 1 is in front for 1 region and the other is in front for the other region, ray tracing is too computationally intensive to work in real time, so use above method
 - [ ] Research [STL File Format](https://en.wikipedia.org/wiki/STL_%28file_format%29)
+- [ ] Investigate weird tilting up and down behavior
 
 ## Documentation
 
