@@ -5,7 +5,7 @@ import java.io.*;
 import java.awt.Graphics;
 
 /**
- * Sphere
+ * Test
  * 
  * @author NC03
  * @version 1.2.3

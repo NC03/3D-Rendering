@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 /**
- * Sphere
+ * Triangle
  * 
  * @author NC03
  * @version 1.2.3

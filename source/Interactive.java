@@ -10,6 +10,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+/**
+ * Interactive
+ * 
+ * @author NC03
+ * @version 1.2.3
+ * 
+ */
 public class Interactive extends JFrame {
 
     private static final long serialVersionUID = 1L;
