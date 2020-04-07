@@ -15,7 +15,7 @@ import java.io.File;
  * Interactive
  * 
  * @author NC03
- * @version 1.2.4
+ * @version 1.2.5
  * 
  */
 public class Interactive extends JFrame {

@@ -15,7 +15,7 @@ import java.io.IOException;
  * ASCII STL
  * 
  * @author NC03
- * @version 1.2.4
+ * @version 1.2.5
  * 
  */
 public class ASCIISTL extends Shape {

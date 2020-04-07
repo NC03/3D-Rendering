@@ -6,7 +6,7 @@ import java.awt.Color;
  * Line
  * 
  * @author NC03
- * @version 1.2.4
+ * @version 1.2.5
  * 
  */
 public class Line extends Shape {

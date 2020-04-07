@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
  * Shape
  * 
  * @author NC03
- * @version 1.2.4
+ * @version 1.2.5
  * 
  */
 public abstract class Shape implements Comparable<Shape> {

@@ -2,7 +2,7 @@
 
 By NC03
 
-**Version 1.2.4**
+**Version 1.2.5**
 
 *3D Rendering Environment from scratch using Java*
 
