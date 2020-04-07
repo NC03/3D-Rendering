@@ -1,5 +1,5 @@
 
-VERSION = 1.2.3
+VERSION = 1.2.4
 
 build:
 	javac source/*.java -d bytecode/
@@ -21,3 +21,6 @@ generate_documentation:
 
 generate_binary:
 	python3 make.py buildJar
+
+update_version:
+	python3 make.py updateVersion

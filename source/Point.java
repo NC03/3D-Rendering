@@ -6,7 +6,7 @@ import java.awt.Color;
  * Point
  * 
  * @author NC03
- * @version 1.2.3
+ * @version 1.2.4
  * 
  */
 public class Point extends Shape {
