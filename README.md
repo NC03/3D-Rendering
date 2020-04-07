@@ -32,7 +32,3 @@ ffmpeg -framerate 30 -pattern_type glob -i 'genImage/*.png' -c:v libx264 -pix_fm
 
 ffmpeg -framerate 30 -pattern_type glob -i "*.png" -c:v libx264 -pix_fmt yuv420p out.mp4
 ```
-
-## Command to replace version
-
-`(version[ =]+)\d\.\d\.\d`
