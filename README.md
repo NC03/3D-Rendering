@@ -16,6 +16,7 @@ By NC03
   - [X] ASCII STL
   - [ ] Binary STL
 - [ ] Investigate weird tilting up and down behavior
+- [ ] Priority queue for rendering objects based on distance to camera that removes triangles as they are drawn, so that STL shapes can render property by adding individual triangles to list while maintaining "has a" relationship
 
 ## Documentation
 
